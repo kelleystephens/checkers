@@ -1,0 +1,73 @@
+@import url(http://fonts.googleapis.com/css?family=Coda+Caption:800);
+@import url(http://fonts.googleapis.com/css?family=Sofadi+One);
+
+body {
+  background-image: url(../media/sky.gif);
+  background-size: cover;
+}
+
+#board {
+  border: 2px solid black;
+  width: 725px;
+  height: 725px;
+  border-collapse: collapse;
+  margin: auto;
+  background-color: white;
+}
+
+#head {
+  color: red;
+  font-family: 'Coda Caption', sans-serif;
+  font-size: 60px;
+  text-shadow: 3px 3px 2px #696969;
+  text-align: center;
+  margin-top: 15px;
+}
+
+td {
+  border: 2px solid black;
+  width: 10%;
+  height: 10%;
+}
+
+#div {
+  width: 96px;
+  margin: 10px auto;
+}
+
+#start {
+  color: blue;
+  font-family: 'Sofadi One', cursive;
+  background-color: red;
+  border-radius: 8px;
+  font-size: 25px;
+  padding: 10px 5px;
+  margin: 10px auto 20px auto;
+  width: 96px;
+}
+
+.valid {
+  background-color: black;
+}
+
+.player1 {
+  background-image: url('../media/apple.png');
+  background-size: cover;
+}
+
+.player2 {
+  background-image: url('../media/windows.png');
+  background-size: cover;
+}
+
+.current {
+  box-shadow: inset 1px 0px 11px 4px rgba(206, 203, 203, 0.7);
+}
+
+.appleKing {
+  background-image: url('../media/appleking.png');
+}
+
+.windowsKing {
+  background-image: url('../media/man.png');
+}
