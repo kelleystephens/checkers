@@ -63,12 +63,20 @@
 
 
       if(turn > 0){
-        appleTurn();
-        appleKing();
+        if(selectedPiece.hasClass('appleKing')){
+          appleKingMove();
+        }else{
+          appleTurn();
+          appleKing();
+        }
 
       } else if(turn < 0){
-        windowsTurn();
-        windowsKing();
+        if(selectedPiece.hasClass('windowsKing')){
+          windowsKingMove();
+        }else{
+          windowsTurn();
+          windowsKing();
+        }
       }
 
       switchPlayer();
@@ -92,12 +100,12 @@
     } else if((originX + 2 === targetX && originY + 2 === targetY) && adjacentBR.hasClass('player2 checker')) {
         selectedPiece.removeClass('player1 checker current');
         selectedSpace.addClass('player1 checker current');
-        adjacentBR.removeClass('player2 checker');
+        adjacentBR.removeClass('windowsKing player2 checker');
 
     } else if((originX - 2 === targetX && originY + 2 === targetY) && adjacentBL.hasClass('player2 checker')) {
       selectedPiece.removeClass('player1 checker current');
       selectedSpace.addClass('player1 checker current');
-      adjacentBL.removeClass('player2 checker');
+      adjacentBL.removeClass('windowsKing player2 checker');
     } else  {
       return;
     }
@@ -110,12 +118,12 @@
     } else if((originX + 2 === targetX && originY - 2 === targetY) && adjacentTR.hasClass('player1 checker')) {
         selectedPiece.removeClass('player2 checker current');
         selectedSpace.addClass('player2 checker current');
-        adjacentTR.removeClass('player1 checker');
+        adjacentTR.removeClass('appleKing player1 checker');
 
     } else if((originX - 2 === targetX && originY - 2 === targetY) && adjacentTL.hasClass('player1 checker')) {
       selectedPiece.removeClass('player2 checker current');
       selectedSpace.addClass('player2 checker current');
-      adjacentTL.removeClass('player1 checker');
+      adjacentTL.removeClass('appleKing player1 checker');
     } else {
       return;
     }
@@ -135,10 +143,83 @@
     }
   }
 
+  function appleKingMove(){
+    appleKingDown();
+    appleKingUp();
+  }
 
+  function windowsKingMove(){
+    windowsKingDown();
+    windowsKingUp();
+  }
 
+  function appleKingDown(){
+    if((originX + 1 === targetX || originX - 1 === targetX) && originY - 1 === targetY){
+      selectedPiece.removeClass('appleKing player1 checker current');
+      selectedSpace.addClass('appleKing player1 checker current');
 
+    } else if((originX + 2 === targetX && originY - 2 === targetY) && adjacentTR.hasClass('player2 checker')) {
+        selectedPiece.removeClass('appleKing player1 checker current');
+        selectedSpace.addClass('appleKing player1 checker current');
+        adjacentTR.removeClass('windowsKing player2 checker');
 
+    } else if((originX - 2 === targetX && originY - 2 === targetY) && adjacentTL.hasClass('player2 checker')) {
+        selectedPiece.removeClass('appleKing player1 checker current');
+        selectedSpace.addClass('appleKing player1 checker current');
+        adjacentTL.removeClass('windowsKing player2 checker');
+    }
+  }
+
+  function appleKingUp(){
+    if((originX + 1 === targetX || originX - 1 === targetX) && originY + 1 === targetY){
+      selectedPiece.removeClass('appleKing player1 checker current');
+      selectedSpace.addClass('appleKing player1 checker current');
+
+    } else if((originX + 2 === targetX && originY + 2 === targetY) && adjacentBR.hasClass('player2 checker')) {
+        selectedPiece.removeClass('appleKing player1 checker current');
+        selectedSpace.addClass(' appleKing player1 checker current');
+        adjacentBR.removeClass('windowsKing player2 checker');
+
+    } else if((originX - 2 === targetX && originY + 2 === targetY) && adjacentBL.hasClass('player2 checker')) {
+        selectedPiece.removeClass('appleKing player1 checker current');
+        selectedSpace.addClass('appleKing player1 checker current');
+        adjacentBL.removeClass('windowsKing player2 checker');
+    }
+  }
+
+  function windowsKingDown(){
+    if((originX + 1 === targetX || originX - 1 === targetX) && originY + 1 === targetY){
+      selectedPiece.removeClass('windowsKing player2 checker current');
+      selectedSpace.addClass('windowsKing player2 checker current');
+
+    } else if((originX + 2 === targetX && originY + 2 === targetY) && adjacentBR.hasClass('player1 checker')) {
+        selectedPiece.removeClass('windowsKing player2 checker current');
+        selectedSpace.addClass('windowsKing player2 checker current');
+        adjacentBR.removeClass('appleKing player1 checker');
+
+    } else if((originX - 2 === targetX && originY + 2 === targetY) && adjacentBL.hasClass('player1 checker')) {
+        selectedPiece.removeClass('windowsKing player2 checker current');
+        selectedSpace.addClass('windowsKing player2 checker current');
+        adjacentBL.removeClass('appleKing player1 checker');
+    }
+  }
+
+  function windowsKingUp(){
+    if((originX + 1 === targetX || originX - 1 === targetX) && originY - 1 === targetY){
+        selectedPiece.removeClass('windowsKing player2 checker current');
+        selectedSpace.addClass('windowsKing player2 checker current');
+
+    } else if((originX + 2 === targetX && originY - 2 === targetY) && adjacentTR.hasClass('player1 checker')) {
+        selectedPiece.removeClass('windowsKing player2 checker current');
+        selectedSpace.addClass('windowsKing player2 checker current');
+        adjacentTR.removeClass('appleKing player1 checker');
+
+    } else if((originX - 2 === targetX && originY - 2 === targetY) && adjacentTL.hasClass('player1 checker')) {
+        selectedPiece.removeClass('windowsKing player2 checker current');
+        selectedSpace.addClass('windowsKing player2 checker current');
+        adjacentTL.removeClass('appleKing player1 checker');
+    }
+  }
 
 
 
